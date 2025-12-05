@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="400" fill="#0b0c10"/>
+  <style>
+    .box { fill:#1f2833; stroke:#66fcf1; stroke-width:2; rx:8; ry:8; }
+    .text { fill:#ffffff; font-family:Arial, sans-serif; font-size:14px; }
+  </style>
+
+  <!-- Home -->
+  <rect class="box" x="40" y="60" width="220" height="120"/>
+  <text class="text" x="60" y="85">Home Node</text>
+  <text class="text" x="60" y="110">pfSense + HAOS</text>
+  <text class="text" x="60" y="135">Frigate, PBX, PXE</text>
+
+  <!-- VPS1 -->
+  <rect class="box" x="300" y="40" width="180" height="80"/>
+  <text class="text" x="320" y="65">VPS1 - Mail</text>
+  <text class="text" x="320" y="90">Mailcow / MIAB</text>
+
+  <!-- VPS2 -->
+  <rect class="box" x="300" y="160" width="220" height="120"/>
+  <text class="text" x="320" y="185">VPS2 - Edge</text>
+  <text class="text" x="320" y="210">Caddy, Keycloak, Seafile,</text>
+  <text class="text" x="320" y="230">Immich, Joplin, Baïkal, Forgejo</text>
+
+  <!-- VPS3 -->
+  <rect class="box" x="580" y="120" width="180" height="120"/>
+  <text class="text" x="600" y="145">VPS3 - Backup</text>
+  <text class="text" x="600" y="170">MinIO, restic, monitoring</text>
+
+  <!-- Connections -->
+  <line x1="260" y1="120" x2="300" y2="80" stroke="#66fcf1" stroke-width="2"/>
+  <line x1="260" y1="120" x2="300" y2="200" stroke="#66fcf1" stroke-width="2"/>
+  <line x1="520" y1="220" x2="580" y2="180" stroke="#66fcf1" stroke-width="2"/>
+
+  <text class="text" x="260" y="50">WireGuard VPN Mesh</text>
+</svg>

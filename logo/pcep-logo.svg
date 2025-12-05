@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="256" viewBox="0 0 512 256" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="100%" stop-color="#0070ff"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#111111"/>
+      <stop offset="100%" stop-color="#222222"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="512" height="256" fill="#05060a"/>
+  <rect x="12" y="12" width="488" height="232" rx="18" ry="18" fill="url(#g2)" stroke="#00d4ff" stroke-width="2"/>
+
+  <!-- Circuit traces -->
+  <path d="M40 210 H140 L180 150 H260" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="40" cy="210" r="3" fill="#00d4ff"/>
+  <circle cx="140" cy="210" r="3" fill="#00d4ff"/>
+  <circle cx="180" cy="150" r="3" fill="#00d4ff"/>
+  <circle cx="260" cy="150" r="3" fill="#00d4ff"/>
+
+  <!-- Cloud / node icon -->
+  <ellipse cx="420" cy="90" rx="60" ry="32" fill="#101420" stroke="#00d4ff" stroke-width="2"/>
+  <circle cx="390" cy="78" r="18" fill="#101420" stroke="#00d4ff" stroke-width="2"/>
+  <circle cx="430" cy="78" r="16" fill="#101420" stroke="#00d4ff" stroke-width="2"/>
+
+  <circle cx="390" cy="92" r="4" fill="#00d4ff"/>
+  <circle cx="420" cy="92" r="4" fill="#00d4ff"/>
+  <circle cx="450" cy="92" r="4" fill="#00d4ff"/>
+
+  <line x1="390" y1="96" x2="420" y2="96" stroke="#00d4ff" stroke-width="1.5"/>
+  <line x1="420" y1="96" x2="450" y2="96" stroke="#00d4ff" stroke-width="1.5"/>
+
+  <!-- Main text -->
+  <text x="60" y="120" font-family="Consolas, 'Fira Code', monospace" font-size="80" fill="#e6f7ff">
+    PCEP
+  </text>
+
+  <!-- Subtitle -->
+  <text x="64" y="155" font-family="Consolas, 'Fira Code', monospace"
+        font-size="16" fill="#7fd3ff" letter-spacing="2">
+    PERSONAL CLOUD & EDGE PLATFORM
+  </text>
+</svg>

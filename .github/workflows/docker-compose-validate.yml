@@ -1,0 +1,26 @@
+name: Docker Compose validate
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+    paths:
+      - 'compose/**'
+
+jobs:
+  compose-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install docker-compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+
+      - name: Validate VPS2 compose
+        run: docker-compose -f compose/vps2-docker-compose.yml config
+
+      - name: Validate VPS3 compose
+        run: docker-compose -f compose/vps3-docker-compose.yml config
