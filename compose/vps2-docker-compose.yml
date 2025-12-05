@@ -1,0 +1,123 @@
+version: "3.8"
+
+# Docker Compose stack for VPS2 (Edge node)
+# Provides Caddy reverse proxy, Keycloak identity provider, Seafile, Immich, Joplin Server, Baïkal (CalDAV/CardDAV) and Forgejo (Git hosting).
+
+services:
+  caddy:
+    image: caddy:2
+    container_name: caddy
+    restart: unless-stopped
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+      - ./caddy/data:/data
+      - ./caddy/config:/config
+    ports:
+      - "80:80"
+      - "443:443"
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:24.0
+    container_name: keycloak
+    restart: unless-stopped
+    command: start
+    environment:
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://db-keycloak:5432/keycloak
+      KC_DB_USERNAME: keycloak
+      KC_DB_PASSWORD: keycloakpass
+      KC_HOSTNAME: auth.yourdomain.com
+    depends_on:
+      - db-keycloak
+
+  db-keycloak:
+    image: postgres:15
+    container_name: db-keycloak
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: keycloakpass
+      POSTGRES_DB: keycloak
+
+  seafile:
+    image: seafileltd/seafile-mc:latest
+    container_name: seafile
+    restart: unless-stopped
+    environment:
+      DB_HOST: db-seafile
+      DB_ROOT_PASSWD: seafiledbpass
+    depends_on:
+      - db-seafile
+    volumes:
+      - ./seafile:/shared
+
+  db-seafile:
+    image: mariadb:10.11
+    container_name: db-seafile
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: seafiledbpass
+      MYSQL_LOG_CONSOLE: "true"
+
+  immich:
+    image: ghcr.io/immich-app/immich-server:latest
+    container_name: immich
+    restart: unless-stopped
+    environment:
+      DB_URL: postgresql://immich:immichpass@db-immich:5432/immich
+    volumes:
+      - ./immich:/usr/src/app/upload
+    depends_on:
+      - db-immich
+
+  db-immich:
+    image: postgres:15
+    container_name: db-immich
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: immich
+      POSTGRES_PASSWORD: immichpass
+      POSTGRES_DB: immich
+
+  joplin:
+    image: joplin/server:latest
+    container_name: joplin
+    restart: unless-stopped
+    environment:
+      APP_BASE_URL: https://notes.yourdomain.com
+      DB_CLIENT: pg
+      POSTGRES_PASSWORD: joplinpass
+      POSTGRES_USER: joplin
+      POSTGRES_DATABASE: joplin
+      POSTGRES_HOST: db-joplin
+    depends_on:
+      - db-joplin
+
+  db-joplin:
+    image: postgres:15
+    container_name: db-joplin
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: joplin
+      POSTGRES_PASSWORD: joplinpass
+      POSTGRES_DB: joplin
+
+  baikal:
+    image: ckulka/baikal:nginx
+    container_name: baikal
+    restart: unless-stopped
+    volumes:
+      - ./baikal/config:/var/www/baikal/config
+      - ./baikal/data:/var/www/baikal/Specific
+    environment:
+      BAIKAL_SERVER_ADMIN: admin@yourdomain.com
+
+  forgejo:
+    image: codeberg.org/forgejo/forgejo:latest
+    container_name: forgejo
+    restart: unless-stopped
+    volumes:
+      - ./forgejo:/data
+    environment:
+      USER_UID: 1000
+      USER_GID: 1000

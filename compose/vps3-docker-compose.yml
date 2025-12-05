@@ -1,0 +1,30 @@
+version: "3.8"
+
+# Docker Compose stack for VPS3 (Backup node)
+# Provides MinIO (S3‑compatible object storage) and an optional restic rest-server for HTTP backups.
+
+services:
+  minio:
+    image: minio/minio
+    container_name: minio
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadminpass
+    volumes:
+      - ./minio:/data
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+
+  restic-server:
+    image: restic/rest-server:latest
+    container_name: restic
+    restart: unless-stopped
+    environment:
+      OPTIONS: "--prometheus --no-auth"
+    volumes:
+      - ./restic:/data
+    ports:
+      - "8000:8000"
