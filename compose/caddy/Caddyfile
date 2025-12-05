@@ -1,0 +1,32 @@
+# Example Caddyfile for VPS2
+# This file configures Caddy to serve multiple sites with automatic HTTPS.
+# Replace `yourdomain.com` with your actual domain name and update upstream container names/ports as needed.
+
+(auth.yourdomain.com) {
+    reverse_proxy keycloak:8080
+}
+
+(files.yourdomain.com) {
+    reverse_proxy seafile:80
+}
+
+(photos.yourdomain.com) {
+    reverse_proxy immich:3001
+}
+
+(notes.yourdomain.com) {
+    reverse_proxy joplin:22300
+}
+
+(dav.yourdomain.com) {
+    reverse_proxy baikal:80
+}
+
+(git.yourdomain.com) {
+    reverse_proxy forgejo:3000
+}
+
+# Catch‑all: landing page can serve static content or redirect
+yourdomain.com {
+    respond "Welcome to PCEP" 200
+}
