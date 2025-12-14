@@ -10,7 +10,15 @@ export DEBIAN_FRONTEND=noninteractive
 
 apt update
 apt -y upgrade
-apt -y install curl git ufw fail2ban wireguard docker.io docker-compose-plugin
+apt -y install curl git ufw fail2ban wireguard docker.io
+
+if apt-cache show docker-compose-plugin >/dev/null 2>&1; then
+  apt -y install docker-compose-plugin
+elif apt-cache show docker-compose >/dev/null 2>&1; then
+  apt -y install docker-compose
+else
+  echo "Warning: docker-compose/docker-compose-plugin package not available; install Docker Compose manually."
+fi
 
 systemctl enable --now docker
 
