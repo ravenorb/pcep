@@ -1,7 +1,9 @@
+---
 version: "3.8"
 
 # Docker Compose stack for VPS3 (Backup node)
-# Provides MinIO (S3‑compatible object storage) and an optional restic rest-server for HTTP backups.
+# Provides MinIO (S3‑compatible object storage) and an optional restic
+# rest-server for HTTP backups.
 
 services:
   minio:
