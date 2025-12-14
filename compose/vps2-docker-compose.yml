@@ -172,8 +172,7 @@ services:
       - pdns-admin-db
     environment:
       SECRET_KEY: changeme_pdns_admin_secret
-      SQLALCHEMY_DATABASE_URI: >-
-        mysql+pymysql://pdnsadmin:pdnsadminpass@pdns-admin-db/pdnsadmin
+      SQLALCHEMY_DATABASE_URI: mysql+pymysql://pdnsadmin:pdnsadminpass@pdns-admin-db/pdnsadmin
       PDNS_API_KEY: changeme_pdns_api_key
       PDNS_API_URL: http://pdns-authoritative:8081
       OFFLINE_MODE: "false"
