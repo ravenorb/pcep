@@ -4,6 +4,12 @@
 
 - **Keycloak** on VPS2 provides OIDC for Seafile, Immich, Joplin, Forgejo, and future services.
 
+## DNS
+
+- **PowerDNS Authoritative** on VPS2 (`edge.neacnc.com` / `67.217.246.23`) publishes public zones for `neacnc.com` and `elitecncservices.com` and sends NOTIFY/AXFR to secondaries.
+- **PowerDNS Admin** on VPS2 provides a web UI and API client for managing zones, records, and keys.
+- **Mailcow (VPS1)** at `cow.neacnc.com` (`74.208.155.223`) runs as a secondary DNS target, receiving AXFRs from the VPS2 master so mail and DNS stay aligned.
+
 ## Files and photos
 
 - **Seafile** (or alternative) handles file sync and sharing.
