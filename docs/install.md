@@ -26,7 +26,8 @@ This is a high-level checklist. See `PCEP_System_Plan.md` for full details.
   - Configure MX, SPF, DKIM, DMARC.
 
 - VPS2:
-  - Deploy Caddy, Keycloak, Seafile (or chosen file service), Immich, Joplin Server, Baïkal, Forgejo.
+  - Deploy Caddy, Keycloak, Seafile (or chosen file service), Immich, Joplin
+    Server, Baïkal, Forgejo.
   - Wire these behind the reverse proxy and SSO.
 
 - VPS3:

@@ -19,9 +19,11 @@ can rebuild the entire stack from scratch.
 
 1. **Fork** the repository on GitHub.
 2. **Create a branch** for your work:
+
    ```bash
    git checkout -b feature/short-description
    ```
+
 3. Make your changes:
    - Keep commits focused and logical.
    - Update or add documentation when you change behavior.

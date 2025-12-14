@@ -3,16 +3,18 @@
 ![PCEP Logo](logo/pcep-logo.svg)
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/status-alpha-orange.svg)]()
+[![Status](https://img.shields.io/badge/status-alpha-orange.svg)](docs/index.md)
 [![Docs](https://img.shields.io/badge/docs-view%20docs-success)](docs/index.md)
 
-PCEP is a self-hosted personal cloud and edge platform. It replaces third-party
-cloud services (Google Drive / iCloud / Photos / Calendar / Notes / GitHub, etc.)
+PCEP is a self-hosted personal cloud and edge platform. It replaces
+third-party cloud services (Google Drive / iCloud / Photos / Calendar / Notes /
+GitHub, etc.)
 with a stack you control:
 
 - Home gateway and services on **pfSense + Home Assistant OS (HAOS)**
-- Three VPS nodes providing **mail**, **files**, **photos**, **calendar/contacts**,
-  **notes**, **Git hosting**, **identity (SSO)**, **backup**, and **VPN access**
+- Three VPS nodes providing **mail**, **files**, **photos**,
+  **calendar/contacts**, **notes**, **Git hosting**, **identity (SSO)**,
+  **backup**, and **VPN access**
 
 The design is **scriptable, repeatable, and portable** so you can rebuild or
 deploy it as a productized system.
