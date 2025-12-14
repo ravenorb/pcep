@@ -1,7 +1,9 @@
+---
 version: "3.8"
 
 # Docker Compose stack for VPS2 (Edge node)
-# Provides Caddy reverse proxy, Keycloak identity provider, Seafile, Immich, Joplin Server, Baïkal (CalDAV/CardDAV), Forgejo
+# Provides Caddy reverse proxy, Keycloak identity provider,
+# Seafile, Immich, Joplin Server, Baïkal (CalDAV/CardDAV), Forgejo
 # (Git hosting), and authoritative DNS + admin UI.
 
 services:

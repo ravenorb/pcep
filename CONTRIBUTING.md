@@ -1,6 +1,7 @@
 # Contributing to PCEP
 
-Thanks for your interest in contributing to the Personal Cloud & Edge Platform (PCEP).
+Thanks for your interest in contributing to the Personal Cloud & Edge
+Platform (PCEP).
 
 This project is opinionated around self-hosting, reproducibility, and security.
 The goal is to keep the code and docs clear enough that an experienced admin

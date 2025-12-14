@@ -4,6 +4,10 @@ This directory contains scripts and guidance to set up secure, encrypted
 backups using **restic** and **MinIO**. MinIO provides an on-premise
 S3-compatible storage service, while restic performs deduplicated,
 encrypted snapshots.
+This directory contains scripts and guidance to set up secure,
+encrypted backups using **restic** and **MinIO**. MinIO provides an
+on-premise S3-compatible storage service, while restic performs
+deduplicated, encrypted snapshots.
 
 ## Setup Summary
 
@@ -17,6 +21,13 @@ encrypted snapshots.
    * On each host (VPS1, VPS2, VPS3, pfSense/HAOS) install restic.
    * Export `RESTIC_REPOSITORY=s3:http://<vps3-ip>:9000/<bucket-name>` and
      `RESTIC_PASSWORD=<your-strong-password>`.
+   * Access the console on `http://<vps3-ip>:9001` and create buckets
+     for each service: `mail-backup`, `seafile-backup`, `immich-backup`,
+     `notes-backup`, etc.
+2. **Initialise restic repositories:**
+   * On each host (VPS1, VPS2, VPS3, pfSense/HAOS) install restic.
+   * Export `RESTIC_REPOSITORY=s3:http://<vps3-ip>:9000/<bucket-name>`
+     and `RESTIC_PASSWORD=<your-strong-password>`.
    * Run `restic init` to create the repository in each bucket.
 3. **Create backup scripts:**
    * For each service container, identify directories to back up (for
@@ -38,6 +49,8 @@ encrypted snapshots.
    * On your home NAS, install the AWS CLI or `rclone`.
    * Use a cron job to mirror each MinIO bucket to local storage. Example
      using `rclone`:
+   * Use a cron job to mirror each MinIO bucket to local storage.
+     Example using `rclone`:
 
    ```bash
    rclone sync s3:minio/seafile-backup /mnt/nas/backups/seafile \

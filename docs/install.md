@@ -2,6 +2,12 @@
 
 This is a high-level checklist. See `PCEP_System_Plan.md` for full details.
 
+## Order of operations
+
+1. Stand up DNS first so every host and certificate request resolves correctly.
+2. Provision each VPS with the install scripts below.
+3. After the hosts and core services are reachable, bring up the WireGuard mesh.
+
 ## 1. Home node
 
 1. Install pfSense on the N100.
@@ -40,3 +46,24 @@ This is a high-level checklist. See `PCEP_System_Plan.md` for full details.
 - Test mobile VPN into VPS2 and access home resources.
 - Test file sync, photo upload, calendar/contacts, notes, and Git access.
 - Test backups and a sample restore.
+
+## Provisioning scripts
+
+All scripts assume Debian/Ubuntu and must be run as root. From the repository root:
+
+- Bootstrap any VPS with hardened defaults and Docker:
+  ```bash
+  sudo ./scripts/base-server-setup.sh
+  ```
+
+- Stage VPS2 application stack in `/opt/pcep`:
+  ```bash
+  sudo ./scripts/provision-vps2.sh
+  ```
+
+- Stage VPS3 backup stack in `/opt/pcep`:
+  ```bash
+  sudo ./scripts/provision-vps3.sh
+  ```
+
+After copying the compose files, edit `/opt/pcep/.env` and the compose YAMLs with real hostnames, secrets, and storage paths before running `docker compose up -d`. The WireGuard mesh can be enabled after DNS and these base services are online.

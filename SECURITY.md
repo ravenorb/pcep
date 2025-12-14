@@ -32,7 +32,8 @@ Include:
 
 - I will acknowledge your report as soon as practical.
 - I may request more information or logs.
-- Once a fix is ready, I will decide when and how to document the issue publicly.
+- Once a fix is ready, I will decide when and how to document the issue
+  publicly.
 
 Do not test against systems you do not own or control. Do not use findings
 from this project to attack anyone’s infrastructure.
