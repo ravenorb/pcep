@@ -6,21 +6,21 @@ network segmentation, DHCP, DNS, PXE and basic NAS functionality.
 
 ## Hardware
 
-- pfSense running on an N100 appliance (4×2.5 GbE). One port is used for the
-  WAN uplink, one for the LAN (Deco mesh), one for HAOS management/PXE and one
-  spare for an optional DMZ.
+- pfSense on an N100 appliance (4×2.5 GbE). One port is used for WAN, one for
+  LAN (Deco mesh), one for HAOS management/PXE and one spare for an optional
+  DMZ.
 - HAOS server (N150) with two Ethernet ports (LAN and management) and a Wi‑Fi
   adapter.
 - Deco mesh in bridge mode providing Wi‑Fi coverage across the property.
 
 ## Interface Assignment
 
-| Interface | Role                | Example IP range | Notes                |
-|----------:|--------------------|------------------|----------------------|
-| WAN       | ISP connection     | dynamic           | From your ISP        |
-| LAN       | Primary network    | 10.10.10.0/24     | To Deco switch/mesh  |
-| OPT1      | Management/PXE/NAS | 10.10.50.0/24     | To HAOS & PXE server |
-| OPT2      | DMZ (optional)     | 10.10.40.0/24     | Reserved for future  |
+| Interface | Role              | Example range | Notes               |
+|----------:|-------------------|---------------|---------------------|
+| WAN       | ISP connection    | dynamic       | From ISP            |
+| LAN       | Primary network   | 10.10.10.0/24 | To Deco switch/mesh |
+| OPT1      | Mgmt/PXE/NAS      | 10.10.50.0/24 | To HAOS & PXE       |
+| OPT2      | DMZ (optional)    | 10.10.40.0/24 | Reserved for future |
 
 Because you do not have VLAN‑capable switches, segmentation is enforced via
 separate physical ports and firewall rules. The Deco mesh is connected to the

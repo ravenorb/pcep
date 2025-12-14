@@ -49,7 +49,8 @@ This is a high-level checklist. See `PCEP_System_Plan.md` for full details.
 
 ## Provisioning scripts
 
-All scripts assume Debian/Ubuntu and must be run as root. From the repository root:
+All scripts assume Debian/Ubuntu and must be run as root.
+From the repository root:
 
 - Bootstrap any VPS with hardened defaults and Docker:
   ```bash
@@ -66,4 +67,7 @@ All scripts assume Debian/Ubuntu and must be run as root. From the repository ro
   sudo ./scripts/provision-vps3.sh
   ```
 
-After copying the compose files, edit `/opt/pcep/.env` and the compose YAMLs with real hostnames, secrets, and storage paths before running `docker compose up -d`. The WireGuard mesh can be enabled after DNS and these base services are online.
+After copying the compose files, edit `/opt/pcep/.env` and the compose YAMLs
+with real hostnames, secrets, and storage paths before running
+`docker compose up -d`. The WireGuard mesh can be enabled after DNS and these
+base services are online.
